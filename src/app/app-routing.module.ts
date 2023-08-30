@@ -24,6 +24,7 @@ const routes: Routes = [
     path: 'catalog',
     component: CatalogPage,
     canActivate: [ AuthGuard ]
+
   },
 ];
 
