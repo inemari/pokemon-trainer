@@ -1,9 +1,9 @@
 <nav class="bg-blue p-4">
   <div class="container mx-auto flex justify-between items-center">
-    <a href="#" class="text-white text-lg font-semibold">Pokemon Trainer</a>
+    <a class="text-white text-lg font-semibold">Pokemon Trainer</a>
     <ul class="flex space-x-4">
       <li *ngIf="userService.user">
-        <a href="#" class="text-white hover:text-gray-400">
+        <a class="text-white hover:text-gray-400">
           Hi, {{ userService.user.username }}
         </a>
         <button
@@ -16,5 +16,3 @@
     </ul>
   </div>
 </nav>
-
-
