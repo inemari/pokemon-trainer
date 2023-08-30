@@ -4,6 +4,8 @@ import { environment } from 'src/environments/environment';
 import { Pokemon } from '../models/pokemon.model';
 import { finalize } from 'rxjs';
 import { PokemonApiResponse } from '../models/Pokemon-api-response';
+import { StorageUtil } from '../utils/storage.util';
+
 const { apiPokemons } = environment;
 
 @Injectable({
@@ -28,11 +30,17 @@ export class PokemonCatalogService {
 
   constructor(private readonly http: HttpClient) { }
 
-
   public findAllPokemon(): void {
+    // Check if data is in sessionStorage using StorageUtil
+    const storedPokemons = StorageUtil.storageRead<Pokemon[]>('pokemons');
+
+    if (storedPokemons) {
+      this._pokemons = storedPokemons;
+      return;
+    }
+
     this._loading = true;
     this.http.get<PokemonApiResponse>(apiPokemons)
-
       .pipe(
         finalize(() => {
           this._loading = false;
@@ -40,12 +48,12 @@ export class PokemonCatalogService {
       .subscribe({
         next: (response: PokemonApiResponse) => {
           this._pokemons = response.results;
+          // Store data in sessionStorage using StorageUtil
+          StorageUtil.storageSave('pokemons', this._pokemons);
         },
-
         error: (error: HttpErrorResponse) => {
           this._error = error.message;
         }
       })
   }
-
 }
