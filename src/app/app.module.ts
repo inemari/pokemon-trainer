@@ -7,11 +7,13 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { CatalogPage } from './pages/pokemon-catalog/pokemon-catalog.page';
+import { PokemonListComponent } from './components/pokemon-list/pokemon-list.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginPage, LoginFormComponent],
+  declarations: [AppComponent, LoginPage, LoginFormComponent, CatalogPage, PokemonListComponent],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
