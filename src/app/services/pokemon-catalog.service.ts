@@ -32,7 +32,7 @@ export class PokemonCatalogService {
 
   public findAllPokemon(): void {
     // Check if data is in sessionStorage using StorageUtil
-    const storedPokemons = StorageUtil.storageRead<Pokemon[]>('pokemons');
+    const storedPokemons = StorageUtil.sessionStorageRead<Pokemon[]>('pokemons');
 
     if (storedPokemons) {
       this._pokemons = storedPokemons;
@@ -49,7 +49,7 @@ export class PokemonCatalogService {
         next: (response: PokemonApiResponse) => {
           this._pokemons = response.results;
           // Store data in sessionStorage using StorageUtil
-          StorageUtil.storageSave('pokemons', this._pokemons);
+          StorageUtil.sessionStorageSave('pokemons', this._pokemons);
         },
         error: (error: HttpErrorResponse) => {
           this._error = error.message;

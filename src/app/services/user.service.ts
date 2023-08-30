@@ -4,7 +4,6 @@ import { StorageUtil } from '../utils/storage.util';
 import { StorageKeys } from '../consts/storage-keys.enum';
 
 @Injectable({
-
   providedIn: 'root',
 })
 export class UserService {
@@ -15,11 +14,11 @@ export class UserService {
   }
 
   public set user(user: User | undefined) {
-    StorageUtil.storageSave<User>(StorageKeys.User, user!)
+    StorageUtil.localStorageSave<User>(StorageKeys.User, user!);
     this._user = user;
   }
 
   constructor() {
-    this._user = StorageUtil.storageRead<User>(StorageKeys.User);
+    this._user = StorageUtil.localStorageRead<User>(StorageKeys.User);
   }
 }
