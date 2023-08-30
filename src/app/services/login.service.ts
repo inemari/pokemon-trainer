@@ -1,14 +1,8 @@
-import {
-  HttpClient,
-  HttpClientModule,
-  HttpHeaders,
-} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map, switchMap, of, tap } from 'rxjs';
+import { Observable, map, switchMap, of } from 'rxjs';
 import { User } from '../models/user.model';
 import { environment } from 'src/environments/environment';
-import { StorageUtil } from '../utils/storage.util';
-import { StorageKeys } from '../consts/storage-keys.enum';
 
 const { apiUsers, apiKey } = environment;
 
@@ -19,18 +13,14 @@ export class LoginService {
   constructor(private readonly http: HttpClient) {}
 
   public login(username: string): Observable<User> {
-    return this.checkUsername(username)
-    .pipe(
+    return this.checkUsername(username).pipe(
       switchMap((user: User | undefined) => {
-        if (user === undefined){
-          return this.createUser(username)
+        if (user === undefined) {
+          return this.createUser(username);
         }
         return of(user);
-      }), tap((user: User) => {
-        StorageUtil.storageSave<User>(StorageKeys.User, user)
-
       })
-    )
+    );
   }
 
   private checkUsername(username: string): Observable<User | undefined> {
