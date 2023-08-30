@@ -14,8 +14,6 @@ export class CatalogPage implements OnInit {
     return this.pokemonCatalogService.pokemons;
   }
 
-
-
   get loading(): boolean {
     return this.pokemonCatalogService.loading;
   }
