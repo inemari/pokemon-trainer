@@ -10,9 +10,10 @@ import { FormsModule } from '@angular/forms';
 import { CatalogPage } from './pages/pokemon-catalog/pokemon-catalog.page';
 import { PokemonListComponent } from './components/pokemon-list/pokemon-list.component';
 import { PokemonListItemComponent } from './components/pokemon-list-item/pokemon-list-item.component';
+import { CollectButtonComponent } from './components/collect-button/collect-button.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginPage, LoginFormComponent, CatalogPage, PokemonListComponent, PokemonListItemComponent],
+  declarations: [AppComponent, LoginPage, LoginFormComponent, CatalogPage, PokemonListComponent, PokemonListItemComponent, CollectButtonComponent],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
