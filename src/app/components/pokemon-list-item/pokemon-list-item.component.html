@@ -1,1 +1,9 @@
-<p>pokemon-list-item works!</p>
+
+<li *ngIf="pokemon">
+    <section>
+        <img [src]="getPokemonImageUrl(pokemon.url)" alt="{{pokemon.name}}">
+    </section>
+    <section>
+        <span>Pokemon name: {{pokemon.name}}</span>
+    </section>
+</li>
