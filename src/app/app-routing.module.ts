@@ -16,7 +16,6 @@ const routes: Routes = [
     component: LoginPage,
   },
   {
-<<<<<<< HEAD
     path:'trainer',
     component: TrainerPage,
     canActivate: [ AuthGuard ]
@@ -25,10 +24,7 @@ const routes: Routes = [
     path: 'catalog',
     component: CatalogPage,
     canActivate: [ AuthGuard ]
-=======
-    path: 'catalog',
-    component: CatalogPage,
->>>>>>> 8482f6a (Updated login with redirect)
+
   },
 ];
 
