@@ -9,6 +9,12 @@ import { Pokemon } from 'src/app/models/pokemon.model';
 })
 export class PokemonListItemComponent {
   @Input() pokemon?: Pokemon;
+
+  capitalizeFirstLetter(str: string): string {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+
   getPokemonImageUrl(pokemonUrl: string): string {
     // Extract the Pokémon ID from the URL
     const pokemonId = pokemonUrl.split('/').reverse()[1];
