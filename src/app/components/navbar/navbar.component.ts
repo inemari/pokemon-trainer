@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
 import { StorageUtil } from 'src/app/utils/storage.util';
 
@@ -10,9 +11,13 @@ import { StorageUtil } from 'src/app/utils/storage.util';
 })
 export class NavbarComponent {
   constructor(
-    public userService: UserService,
+    private readonly userService: UserService,
     private readonly router: Router
   ) {}
+
+  public get user(): User | undefined {
+    return this.userService.user;
+  }
 
   logout(): void {
     if (this.userService.user) {

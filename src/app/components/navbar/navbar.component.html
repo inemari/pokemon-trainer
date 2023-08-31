@@ -1,18 +1,19 @@
 <nav class="bg-blue p-4">
   <div class="container mx-auto flex justify-between items-center">
     <a class="text-white text-lg font-semibold">Pokemon Trainer</a>
-    <ul class="flex space-x-4">
-      <li *ngIf="userService.user">
-        <a class="text-white hover:text-gray-400">
-          Hi, {{ userService.user.username }}
-        </a>
-        <button
-          class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-          (click)="logout()"
-        >
-          Log Out
-        </button>
-      </li>
-    </ul>
+    <div *ngIf="user" class="flex items-center">
+      <a class="text-white hover:text-gray-400 text-lg">
+        Hi, {{ user.username }}
+      </a>
+    </div>
+    <button
+      *ngIf="user"
+      type="button"
+      class="bg-orange text-white px-4 py-2 rounded hover:bg-red-600"
+      (click)="logout()"
+    >
+      Log Out
+    </button>
   </div>
 </nav>
+
