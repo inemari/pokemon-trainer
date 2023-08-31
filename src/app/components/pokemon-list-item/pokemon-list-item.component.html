@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <li *ngIf="pokemon"
     class="  p-3 relative text-center max-w-sm rounded overflow-hidden shadow-lg bg-white">
 
@@ -6,12 +7,18 @@
     <img class="h-48 w-full object-cover md:h-full md:w-48 " [src]="getPokemonImageUrl(pokemon.url)"
         alt="{{pokemon.name}}">
 
-
-    <button
-        class="bg-orange justify-center hover:bg-opacity-75 w-full text-gray font-bold py-2 px-4 rounded inline-flex items-center shadow-lg">
-        <img class="fill-current w-8 h-8 mr-2 "
-            src="https://github.com/PokeAPI/sprites/blob/master/sprites/items/dream-world/poke-ball.png?raw=true">
-        <h1>Catch</h1>
-
-    </button>
+    <app-collect-button   
+    class="bg-orange justify-center hover:bg-opacity-75 w-full text-gray font-bold py-2 px-4 rounded inline-flex items-center shadow-lg" [pokemonName]="pokemon.name">        
+        <img class="fill-current w-8 h-8 mr-2" src="https://github.com/PokeAPI/sprites/blob/master/sprites/items/dream-world/poke-ball.png?raw=true">
+    <h1>Catch</h1>
+</app-collect-button>
+=======
+<li *ngIf="pokemon" class="text-center max-w-sm rounded overflow-hidden shadow-lg border relative">
+    <img 
+        class="h-48 w-full object-cover md:h-full md:w-48" 
+        [src]="getPokemonImageUrl(pokemon.url)"
+        alt="{{pokemon.name}}">
+    <h5 class="font-bold text-xl mb-2">{{ capitalizeFirstLetter(pokemon.name) }}</h5>
+    <app-collect-button [pokemonName]="pokemon.name"></app-collect-button>
+>>>>>>> ff3764bca228100045704c7519cefc7ee1785b6c
 </li>
