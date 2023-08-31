@@ -1,33 +1,21 @@
-<form #loginForm="ngForm" class="p-10 relative text-center max-w-sm rounded overflow-hidden shadow-lg bg-white mx-auto" (ngSubmit)="loginSubmit(loginForm)">
-  <fieldset class="">
-    <label for="username" class="block">Username</label>
-    <input
-      type="text"
-      ngModel
-      #username="ngModel"
-      name="username"
-      id="username"
-      class="border border-slate-300 p-2 rounded w-full"
-      placeholder="Enter username"
-    />
-  </fieldset>
+<div class="bg-white shadow-md rounded-lg flex flex-wrap   items-center h-full w-full border-yellow">
+  <img class="bg-gradient-to-l from-white to-yellow p-5 h-full w-2/4 rounded-l-lg"
+    src="https://raw.githubusercontent.com/PokeAPI/sprites/6b6d9a9f269d2e5a2859e65f162aafff1087d8e6/sprites/pokemon/other/dream-world/25.svg"
+    alt="Pikachu" />
 
-  <button type="submit" class="bg-orange p-2 rounded mt-10">Login</button>
-</form>
+  <form #loginForm="ngForm" class="space-y-6 w-2/4 p-10 flex flex-col items-center justify-between"
+    (ngSubmit)="loginSubmit(loginForm)">
+    <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Welcome to PokemonTrainer!
+    </h2>
+    <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Username</label>
+    <div class="mt-2 w-full">
+      <input id="username" ngModel #username="ngModel" name="username" type="text" required
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="username" placeholder="Username" />
+    </div>
 
-<!-- <form #loginForm="ngForm" class="p-10 relative text-center max-w-sm rounded overflow-hidden shadow-lg bg-white" (ngSubmit)="loginSubmit(loginForm)">
-  <fieldset class="">
-    <label for="username" class="block">Username</label>
-    <input
-      type="text"
-      ngModel
-      #username="ngModel"
-      name="username"
-      id="username"
-      class="border border-slate-300 p-2 rounded w-full"
-      placeholder="Enter username"
-    />
-  </fieldset>
-
-  <button type="submit" class="bg-orange p-2 rounded">Login</button>
-</form> -->
+    <button type="submit"
+      class="w-full bg-blue hover:bg-opacity-75 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Log
+      in</button>
+  </form>
+</div>

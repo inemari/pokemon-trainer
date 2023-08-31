@@ -17,9 +17,9 @@ module.exports = {
         xl: "1440px",
       },
       colors: {
-        yellow: "#FAD24B",
+        yellow: "#FFCC00",
         orange: "#EE9F2F",
-        blue: "#7EBEA9",
+        blue: "#0075BE",
         "light-grey": "#E1E5E1",
         "dark-brown": "#36321B",
         white: "#FFFFFF",
