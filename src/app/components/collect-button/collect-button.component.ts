@@ -28,14 +28,14 @@ export class CollectButtonComponent implements OnInit {
   onCollectClick(): void {
     this.loading = true;
     this.collectedService.collectPokemon(this.pokemonName)
-    .subscribe({
-      next: (user: User) => {
-        this.loading = false;
-        this.collected = this.userService.isCollected(this.pokemonName);
-      },
-      error: (error: HttpErrorResponse) => {
-        console.log("ERROR", error.message)
-      }
-    })
+      .subscribe({
+        next: (user: User) => {
+          this.loading = false;
+          this.collected = this.userService.isCollected(this.pokemonName);
+        },
+        error: (error: HttpErrorResponse) => {
+          console.log("ERROR", error.message)
+        }
+      })
   }
 }

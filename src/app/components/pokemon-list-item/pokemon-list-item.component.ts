@@ -9,10 +9,10 @@ import { Pokemon } from 'src/app/models/pokemon.model';
 })
 export class PokemonListItemComponent {
   @Input() pokemon?: Pokemon;
-
+  isCollected: boolean = false;
   capitalizeFirstLetter(str: string): string {
     return str.charAt(0).toUpperCase() + str.slice(1);
-}
+  }
 
 
   getPokemonImageUrl(pokemonUrl: string): string {
@@ -21,4 +21,6 @@ export class PokemonListItemComponent {
     // Construct the image URL using the extracted ID
     return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`;
   }
+
+
 }
