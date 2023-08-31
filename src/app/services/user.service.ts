@@ -24,24 +24,26 @@ export class UserService {
   }
 
 
-    public isCollected(pokemon: string): boolean {
+  public isCollected(pokemon: string): boolean {
     if (this._user) {
       return Boolean(this._user?.pokemon.find(p => p === pokemon));
     }
     return false;
-  } 
+  }
 
   public releasePokemon(pokemon: string): void {
     if (this._user) {
-      this._user.pokemon = this._user.pokemon.filter(p => p!== pokemon);
+      this._user.pokemon = this._user.pokemon.filter(p => p !== pokemon);
     }
   }
-  
+
   public collectPokemon(pokemon: string): void {
     if (this._user) {
       this._user.pokemon.push(pokemon);
     }
   }
+
+
 
 }
 
