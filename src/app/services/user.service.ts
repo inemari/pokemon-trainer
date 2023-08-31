@@ -24,20 +24,13 @@ export class UserService {
   }
 
 
-<<<<<<< HEAD
     public isCollected(pokemon: string): boolean {
     if (this._user) {
       return Boolean(this._user?.pokemon.find(p => p === pokemon));
-=======
-    public isCollected(pokemonName: string): boolean {
-    if (this._user) {
-      return Boolean(this._user?.pokemon.find(p => p === pokemonName));
->>>>>>> ff3764bca228100045704c7519cefc7ee1785b6c
     }
     return false;
   } 
 
-<<<<<<< HEAD
   public releasePokemon(pokemon: string): void {
     if (this._user) {
       this._user.pokemon = this._user.pokemon.filter(p => p!== pokemon);
@@ -47,17 +40,6 @@ export class UserService {
   public collectPokemon(pokemon: string): void {
     if (this._user) {
       this._user.pokemon.push(pokemon);
-=======
-  public releasePokemon(pokemonName: string): void {
-    if (this._user) {
-      this._user.pokemon = this._user.pokemon.filter(p => p!== pokemonName);
-    }
-  }
-  
-  public collectPokemon(pokemon: Pokemon): void {
-    if (this._user) {
-      this._user.pokemon.push(pokemon.name);
->>>>>>> ff3764bca228100045704c7519cefc7ee1785b6c
     }
   }
 
