@@ -12,9 +12,11 @@ import { PokemonListComponent } from './components/pokemon-list/pokemon-list.com
 import { PokemonListItemComponent } from './components/pokemon-list-item/pokemon-list-item.component';
 import { CollectButtonComponent } from './components/collect-button/collect-button.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { TrainerPage } from './pages/trainer/trainer.page';
+
 
 @NgModule({
-  declarations: [AppComponent, LoginPage, LoginFormComponent, CatalogPage, PokemonListComponent, PokemonListItemComponent, NavbarComponent, CollectButtonComponent],
+  declarations: [AppComponent, LoginPage, LoginFormComponent, CatalogPage, PokemonListComponent, PokemonListItemComponent, NavbarComponent, CollectButtonComponent, TrainerPage],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
