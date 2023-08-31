@@ -10,6 +10,9 @@ import { PokemonCatalogService } from 'src/app/services/pokemon-catalog.service'
 })
 export class CatalogPage implements OnInit {
 
+  public isDataLoaded: boolean = false;
+  private _pokemons: Pokemon[] = this.pokemonCatalogService.pokemons;
+
   get pokemons(): Pokemon[] {
     return this.pokemonCatalogService.pokemons;
   }
@@ -28,7 +31,15 @@ export class CatalogPage implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.pokemonCatalogService.findAllPokemon();
+    this.pokemonCatalogService.findAllPokemon().subscribe(
+      (data: Pokemon[]) => {
+      this._pokemons = data;
+      this.isDataLoaded = true;
+    },
+    (error: any) => {
+      throw new Error("Error fetching Pokemon data: ", error);
+      this.isDataLoaded = true;
+    });
   }
 
 }

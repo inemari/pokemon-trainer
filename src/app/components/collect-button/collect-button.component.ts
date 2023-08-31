@@ -11,13 +11,9 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class CollectButtonComponent implements OnInit {
 
+  public loading: boolean = false;
   public collected: boolean = false;
-
   @Input() pokemonName: string = "";
-
-  get loading(): boolean {
-    return this.collectedService.loading
-  }
 
   constructor(
     private userService: UserService,
@@ -26,12 +22,15 @@ export class CollectButtonComponent implements OnInit {
 
   ngOnInit() {
     this.collected = this.userService.isCollected(this.pokemonName);
+    console.log(this.collected)
   }
 
   onCollectClick(): void {
+    this.loading = true;
     this.collectedService.collectPokemon(this.pokemonName)
     .subscribe({
       next: (user: User) => {
+        this.loading = false;
         this.collected = this.userService.isCollected(this.pokemonName);
       },
       error: (error: HttpErrorResponse) => {

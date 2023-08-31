@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
 import { StorageUtil } from '../utils/storage.util';
 import { StorageKeys } from '../consts/storage-keys.enum';
-import { Pokemon } from '../models/pokemon.model';
 
 @Injectable({
   providedIn: 'root',
@@ -24,22 +23,22 @@ export class UserService {
   }
 
 
-    public isCollected(pokemonName: string): boolean {
+    public isCollected(pokemon: string): boolean {
     if (this._user) {
-      return Boolean(this._user?.pokemon.find(p => p === pokemonName));
+      return Boolean(this._user?.pokemon.find(p => p === pokemon));
     }
     return false;
   } 
 
-  public releasePokemon(pokemonName: string): void {
+  public releasePokemon(pokemon: string): void {
     if (this._user) {
-      this._user.pokemon = this._user.pokemon.filter(p => p!== pokemonName);
+      this._user.pokemon = this._user.pokemon.filter(p => p!== pokemon);
     }
   }
   
-  public collectPokemon(pokemon: Pokemon): void {
+  public collectPokemon(pokemon: string): void {
     if (this._user) {
-      this._user.pokemon.push(pokemon.name);
+      this._user.pokemon.push(pokemon);
     }
   }
 

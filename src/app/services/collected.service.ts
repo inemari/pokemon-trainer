@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Pokemon } from '../models/pokemon.model';
 import { User } from '../models/user.model';
-import { Observable, finalize, tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 const { apiKey, apiUsers } = environment
 
@@ -14,15 +14,9 @@ const { apiKey, apiUsers } = environment
 })
 export class CollectedService {
 
-  private _loading: boolean = false;
-
-  get loading(): boolean {
-    return this._loading;
-  }
-
   constructor(
     private http: HttpClient,
-    private readonly pokemonsService: PokemonCatalogService,
+    private readonly pokemonService: PokemonCatalogService,
     private readonly userService: UserService
   ) { }
 
@@ -32,24 +26,22 @@ export class CollectedService {
     }
 
     const user: User = this.userService.user
-    const pokemon: Pokemon | undefined = this.pokemonsService.findPokemonByName(pokemonName)
+    const pokemon: Pokemon | undefined = this.pokemonService.findPokemonByName(pokemonName)
 
     if(!pokemon) {
-      throw new Error('collectPokemon: Pokemon not found' + pokemonName)
+      throw new Error('collectPokemon: Pokemon not found ' + pokemonName)
     }
 
     if(this.userService.isCollected(pokemonName)) {
       this.userService.releasePokemon(pokemonName);
     } else {
-      this.userService.collectPokemon(pokemon);
+      this.userService.collectPokemon(pokemonName);
     }
 
   const headers = new HttpHeaders({
     'Content-Type': 'application/json',
     'x-api-key': apiKey
   })
-    
-  this._loading = true;
 
   return this.http.patch<User>(`${apiUsers}/${user.id}`, {
     pokemon: [...user.pokemon]
@@ -59,8 +51,6 @@ export class CollectedService {
   .pipe(
     tap((updatedUser: User) => {
       this.userService.user = updatedUser;
-    }),
-    finalize(() => this._loading = false)
-  )
+    }))
 }
 }

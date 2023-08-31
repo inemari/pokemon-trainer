@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Pokemon } from '../models/pokemon.model';
-import { finalize } from 'rxjs';
+import { Observable, finalize, map, of } from 'rxjs';
 import { PokemonApiResponse } from '../models/Pokemon-api-response';
 import { StorageUtil } from '../utils/storage.util';
 
@@ -30,22 +30,24 @@ export class PokemonCatalogService {
 
   constructor(private readonly http: HttpClient) { }
 
-  public findAllPokemon(): void {
-    // Check if data is in sessionStorage using StorageUtil
-    const storedPokemons = StorageUtil.sessionStorageRead<Pokemon[]>('pokemons');
 
-    if (storedPokemons) {
-      this._pokemons = storedPokemons;
-      return;
+  public findAllPokemon(): Observable<Pokemon[]> {
+    if (this._pokemons.length > 0) {
+      return of(this._pokemons);
     }
 
     this._loading = true;
-    this.http.get<PokemonApiResponse>(apiPokemons)
+
+    return this.http.get<PokemonApiResponse>(apiPokemons)
       .pipe(
         finalize(() => {
           this._loading = false;
-        }))
-      .subscribe({
+        }),
+        map((response: PokemonApiResponse) => {
+          this._pokemons = response.results;
+          return this._pokemons;
+        })
+    /*   .subscribe({
         next: (response: PokemonApiResponse) => {
           this._pokemons = response.results;
           // Store data in sessionStorage using StorageUtil
@@ -53,8 +55,8 @@ export class PokemonCatalogService {
         },
         error: (error: HttpErrorResponse) => {
           this._error = error.message;
-        }
-      })
+        } */
+      )
   }
 
     public findPokemonByName(name: string): Pokemon | undefined {
