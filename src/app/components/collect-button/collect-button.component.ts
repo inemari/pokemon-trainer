@@ -22,7 +22,7 @@ export class CollectButtonComponent implements OnInit {
 
   ngOnInit() {
     this.collected = this.userService.isCollected(this.pokemonName);
-    console.log(this.collected)
+    //console.log(this.collected)
   }
 
   onCollectClick(): void {

@@ -5,39 +5,31 @@ import { Pokemon } from '../models/pokemon.model';
 import { Observable, finalize, map, of } from 'rxjs';
 import { PokemonApiResponse } from '../models/Pokemon-api-response';
 import { StorageUtil } from '../utils/storage.util';
-
 const { apiPokemons } = environment;
-
 @Injectable({
   providedIn: 'root'
 })
 export class PokemonCatalogService {
-
   private _pokemons: Pokemon[] = [];
   private _error: string = "";
   private _loading: boolean = false;
-
   get pokemons(): Pokemon[] {
     return this._pokemons;
   }
   get loading(): boolean {
     return this._loading;
   }
-
   get error(): string {
     return this._error;
   }
-
   constructor(private readonly http: HttpClient) { }
-
-
   public findAllPokemon(): Observable<Pokemon[]> {
-    if (this._pokemons.length > 0) {
+    const storedPokemons = StorageUtil.sessionStorageRead<Pokemon[]>('pokemons');
+    if (storedPokemons) {
+      this._pokemons = storedPokemons;
       return of(this._pokemons);
     }
-
     this._loading = true;
-
     return this.http.get<PokemonApiResponse>(apiPokemons)
       .pipe(
         finalize(() => {
@@ -45,22 +37,14 @@ export class PokemonCatalogService {
         }),
         map((response: PokemonApiResponse) => {
           this._pokemons = response.results;
-          return this._pokemons;
-        })
-    /*   .subscribe({
-        next: (response: PokemonApiResponse) => {
-          this._pokemons = response.results;
           // Store data in sessionStorage using StorageUtil
           StorageUtil.sessionStorageSave('pokemons', this._pokemons);
-        },
-        error: (error: HttpErrorResponse) => {
-          this._error = error.message;
-        } */
-      )
+          //console.log("this pokemons", this._pokemons);
+          return this._pokemons; // Return the updated array
+        })
+      );
   }
-
-    public findPokemonByName(name: string): Pokemon | undefined {
-      return this._pokemons.find((pokemon: Pokemon) => pokemon.name === name);
-    }
-
+  public findPokemonByName(name: string): Pokemon | undefined {
+    return this._pokemons.find((pokemon: Pokemon) => pokemon.name === name);
+  }
 }

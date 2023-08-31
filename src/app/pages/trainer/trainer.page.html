@@ -1,11 +1,17 @@
 <header class="container mx-auto p-4">
   <h1>Welcome {{ user?.username }}</h1>
 </header>
-<main>
+<main class="bg-light-grey bg-opacity-30">
+  <div *ngIf="user">
   <h4 class="text-xl">These are Your Collected Pokémon!</h4>
-  <ul>
-    <li *ngFor="let pokemon of userService.user.pokemon">
+  <!-- <ul>
+    <li *ngFor="let pokemon of collected">
       {{ pokemon }}
     </li>
-  </ul>
+
+  </ul> -->
+
+  <app-pokemon-list [pokemons]="collected"></app-pokemon-list>
+
+</div>
 </main>
