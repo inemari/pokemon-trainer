@@ -1,5 +1,5 @@
-<form #loginForm="ngForm" (ngSubmit)="loginSubmit(loginForm)">
-  <fieldset class="mb-3">
+<form #loginForm="ngForm" class="p-10 relative text-center max-w-sm rounded overflow-hidden shadow-lg bg-white mx-auto" (ngSubmit)="loginSubmit(loginForm)">
+  <fieldset class="">
     <label for="username" class="block">Username</label>
     <input
       type="text"
@@ -12,5 +12,22 @@
     />
   </fieldset>
 
-  <button type="submit" class="bg-yellow-500 p-2 rounded">Login</button>
+  <button type="submit" class="bg-orange p-2 rounded mt-10">Login</button>
 </form>
+
+<!-- <form #loginForm="ngForm" class="p-10 relative text-center max-w-sm rounded overflow-hidden shadow-lg bg-white" (ngSubmit)="loginSubmit(loginForm)">
+  <fieldset class="">
+    <label for="username" class="block">Username</label>
+    <input
+      type="text"
+      ngModel
+      #username="ngModel"
+      name="username"
+      id="username"
+      class="border border-slate-300 p-2 rounded w-full"
+      placeholder="Enter username"
+    />
+  </fieldset>
+
+  <button type="submit" class="bg-orange p-2 rounded">Login</button>
+</form> -->
