@@ -3,15 +3,9 @@
 </header>
 <main class="bg-light-grey bg-opacity-30">
   <div *ngIf="user">
-  <h4 class="text-xl">These are Your Collected Pokémon!</h4>
-  <!-- <ul>
-    <li *ngFor="let pokemon of collected">
-      {{ pokemon }}
-    </li>
+    <h4 class="text-xl">These are Your Collected Pokémon!</h4>
 
-  </ul> -->
+    <app-pokemon-list [pokemons]="collected"></app-pokemon-list>
 
-  <app-pokemon-list [pokemons]="collected"></app-pokemon-list>
-
-</div>
+  </div>
 </main>

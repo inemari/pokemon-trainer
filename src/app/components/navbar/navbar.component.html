@@ -1,19 +1,21 @@
-<nav class="bg-blue p-4">
-  <div class="container mx-auto flex justify-between items-center">
-    <a class="text-white text-lg font-semibold">Pokemon Trainer</a>
-    <div *ngIf="user" class="flex items-center">
-      <a class="text-white hover:text-gray-400 text-lg">
+<nav *ngIf="user" class="bg-blue flex-row">
+
+  <div class="flex flex-wrap justify-between  mx-auto max-w-screen-xl p-4">
+    <a class="flex items-center">
+      <img class="h-14 mr-4"
+        src="https://raw.githubusercontent.com/PokeAPI/sprites/6b6d9a9f269d2e5a2859e65f162aafff1087d8e6/sprites/pokemon/other/dream-world/25.svg"
+        alt="Pikachu" /><span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Pokemon
+        trainer</span>
+    </a>
+    <div *ngIf="user" class="flex items-center ">
+      <a class="text-white text-lg pointer-events-none mr-4">
         Hi, {{ user.username }}
       </a>
+
+      <button *ngIf="user" type="button"
+        class="bg-yellow text-dark-brown px-4 py-2 rounded hover:bg-orange font-semibold" (click)="logout()">
+        Log Out
+      </button>
     </div>
-    <button
-      *ngIf="user"
-      type="button"
-      class="bg-orange text-white px-4 py-2 rounded hover:bg-red-600"
-      (click)="logout()"
-    >
-      Log Out
-    </button>
   </div>
 </nav>
-
