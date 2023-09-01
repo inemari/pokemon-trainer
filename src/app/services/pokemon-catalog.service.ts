@@ -37,14 +37,13 @@ export class PokemonCatalogService {
         }),
         map((response: PokemonApiResponse) => {
           this._pokemons = response.results;
-          // Store data in sessionStorage using StorageUtil
           StorageUtil.sessionStorageSave('pokemons', this._pokemons);
-          //console.log("this pokemons", this._pokemons);
           return this._pokemons; // Return the updated array
         })
       );
   }
   public findPokemonByName(name: string): Pokemon | undefined {
+    this.findAllPokemon()
     return this._pokemons.find((pokemon: Pokemon) => pokemon.name === name);
   }
 }

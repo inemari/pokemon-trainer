@@ -29,10 +29,12 @@ export class CollectedService {
     const pokemon: Pokemon | undefined = this.pokemonService.findPokemonByName(pokemonName)
 
     if(!pokemon) {
+      console.log("Pokemons:", pokemon)
       throw new Error('collectPokemon: Pokemon not found ' + pokemonName)
     }
-
+    console.log("release Pokemon")
     if(this.userService.isCollected(pokemonName)) {
+      
       this.userService.releasePokemon(pokemonName);
     } else {
       this.userService.collectPokemon(pokemonName);
