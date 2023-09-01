@@ -1,0 +1,12 @@
+<button 
+(click)="onCollectClick()"
+type="button"
+class="w-full bg-blue hover:bg-opacity-75 text-dark-brown font-bold py-2 px-4 border-blue rounded"
+data-te-ripple-init data-te-ripple-color="light">
+<ng-container *ngIf="collected; else notCollected">
+    Collected
+</ng-container>
+<ng-template #notCollected>
+    Collect
+</ng-template>
+</button>

@@ -8,6 +8,7 @@ import { Pokemon } from 'src/app/models/pokemon.model';
 })
 export class PokemonListComponent implements OnInit {
   @Input() pokemons: Pokemon[] = [];
+  @Input() isCatalogPage: boolean = false
 
 
   constructor() {

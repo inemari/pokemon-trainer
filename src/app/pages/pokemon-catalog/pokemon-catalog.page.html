@@ -1,6 +1,6 @@
 <main class="bg-light-grey bg-opacity-30">
 
     <p *ngIf="loading ">Loading pokemon</p>
-    <app-pokemon-list [pokemons]="pokemons"></app-pokemon-list>
+    <app-pokemon-list [isCatalogPage]="true" [pokemons]="pokemons"></app-pokemon-list>
 
 </main>
