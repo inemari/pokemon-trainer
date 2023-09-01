@@ -5,7 +5,7 @@
   <h1 class="tracking-tight text-3xl text-white font-extrabold">Your pokemon collection!</h1>
 
 </app-header>
-<main class="bg-light-grey text-center h-full">
+<main class="bg-light-grey text-center h-full flex flex-wrap content-start">
   <div *ngIf="user">
 
     <app-pokemon-list [pokemons]="collected"></app-pokemon-list>

@@ -26,7 +26,7 @@ export class RemoveButtonComponent implements OnInit {
     //console.log(this.collected)
   }
 
-  onCollectClick(): void {
+  onDeleteClick(): void {
     console.log("this is uncollected")
     this.loading = true;
     this.collectedService.collectPokemon(this.pokemonName)
