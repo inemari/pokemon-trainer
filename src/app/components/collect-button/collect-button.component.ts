@@ -15,8 +15,8 @@ export class CollectButtonComponent implements OnInit {
   @Input() pokemonName: string = "";  // Input property to specify the name of the Pokemon
 
   constructor(
-    private userService: UserService,                
-    private readonly collectedService: CollectedService  
+    private userService: UserService,
+    private readonly collectedService: CollectedService,
   ) { }
 
   ngOnInit() {
@@ -24,23 +24,15 @@ export class CollectButtonComponent implements OnInit {
     this.collected = this.userService.isCollected(this.pokemonName);
   }
 
-  // Function to handle the click event when the user wants to collect the Pokemon
-  onCollectClick(): void {
-    this.loading = true; 
-    console.log("loading:", this.loading)
 
-    // Call the collectPokemon method of CollectedService to add the Pokemon to the user's collection
+  onCollectClick(): void {
+
     this.collectedService.collectPokemon(this.pokemonName)
       .subscribe({
-        // When the operation is successful, update loading to false and check if the Pokemon is now collected
+
         next: (user: User) => {
-          setTimeout(() => {
-            this.loading = false;
-            this.collected = this.userService.isCollected(this.pokemonName);
-            console.log("loading:", this.loading)
-          }, 5000);
-          //this.loading = false;
-          
+          this.loading = false;
+          this.collected = this.userService.isCollected(this.pokemonName);
         },
         // If an error occurs, log the error message to the console
         error: (error: HttpErrorResponse) => {
