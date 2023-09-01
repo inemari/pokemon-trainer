@@ -1,3 +1,6 @@
+//This is application module for the PokemonTrainer Angular app.
+//It defines the root module, imports necessary dependencies, and declares components.
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';

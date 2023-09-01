@@ -13,6 +13,7 @@ export class LoginPage implements OnInit {
     private readonly userService: UserService
   ) { }
 
+  //Called when the component is initialized. Checks if a user is already logged in. If so, redirects to the Catalog page.
   ngOnInit(): void {
     if (this.userService.user) {
       this.router.navigateByUrl('/catalog');
@@ -20,6 +21,7 @@ export class LoginPage implements OnInit {
     }
   }
 
+  //Called when the login button is clicked. Navigates to the Catalog page.
   handleLogin(): void {
     this.router.navigateByUrl('/catalog');
 

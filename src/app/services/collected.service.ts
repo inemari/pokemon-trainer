@@ -20,6 +20,7 @@ export class CollectedService {
     private readonly userService: UserService
   ) { }
 
+  //Method for collecting or releasing a Pokémon.
   public collectPokemon(pokemonName: string): Observable<User> {
     if(!this.userService.user) {
       throw new Error('User not logged in')
@@ -29,22 +30,23 @@ export class CollectedService {
     const pokemon: Pokemon | undefined = this.pokemonService.findPokemonByName(pokemonName)
 
     if(!pokemon) {
-      console.log("Pokemons:", pokemon)
       throw new Error('collectPokemon: Pokemon not found ' + pokemonName)
     }
-    console.log("release Pokemon")
+
+    //Checks if the Pokémon is already collceted by the user.
     if(this.userService.isCollected(pokemonName)) {
-      
-      this.userService.releasePokemon(pokemonName);
+      this.userService.releasePokemon(pokemonName); //If collected, release the Pokémon.
     } else {
-      this.userService.collectPokemon(pokemonName);
+      this.userService.collectPokemon(pokemonName); //If not collected, collect the Pokémon.
     }
 
+  //Define the HTTP headers.
   const headers = new HttpHeaders({
     'Content-Type': 'application/json',
     'x-api-key': apiKey
   })
 
+  //Send a PATCH request to update the user's Pokémon collection.
   return this.http.patch<User>(`${apiUsers}/${user.id}`, {
     pokemon: [...user.pokemon]
   }, {
@@ -52,7 +54,7 @@ export class CollectedService {
   })
   .pipe(
     tap((updatedUser: User) => {
-      this.userService.user = updatedUser;
+      this.userService.user = updatedUser; //Update the user information in the UserService. 
     }))
 }
 }
