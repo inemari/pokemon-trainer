@@ -10,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginFormComponent {
   @Output() login: EventEmitter<void> = new EventEmitter();
-  loading = false; // Initialize the loading state
+  loading = false; 
 
   constructor(
     private readonly loginService: LoginService,

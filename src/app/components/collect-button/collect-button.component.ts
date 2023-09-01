@@ -27,14 +27,20 @@ export class CollectButtonComponent implements OnInit {
   // Function to handle the click event when the user wants to collect the Pokemon
   onCollectClick(): void {
     this.loading = true; 
+    console.log("loading:", this.loading)
 
     // Call the collectPokemon method of CollectedService to add the Pokemon to the user's collection
     this.collectedService.collectPokemon(this.pokemonName)
       .subscribe({
         // When the operation is successful, update loading to false and check if the Pokemon is now collected
         next: (user: User) => {
-          this.loading = false;
-          this.collected = this.userService.isCollected(this.pokemonName);
+          setTimeout(() => {
+            this.loading = false;
+            this.collected = this.userService.isCollected(this.pokemonName);
+            console.log("loading:", this.loading)
+          }, 5000);
+          //this.loading = false;
+          
         },
         // If an error occurs, log the error message to the console
         error: (error: HttpErrorResponse) => {

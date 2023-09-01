@@ -1,16 +1,31 @@
-<button (click)="onCollectClick()" type="button" [class.bg-yellow]="!collected" [class.hover:bg-opacity-75]="!collected"
-    [class.focus:bg-light-grey]="!collected" [class.bg-light-grey]="collected" [class.cursor-not-allowed]="collected"
-    [attr.disabled]="collected ? true : null"
+<button (click)="onCollectClick()" type="button" [ngClass]="{
+    'bg-yellow': !collected,
+    'hover:bg-opacity-75': !collected,
+    'focus:bg-light-grey': !collected,
+    'bg-grey': collected,
+    'cursor-not-allowed': collected
+  }" [attr.disabled]="collected ? true : null"
     class="justify-center w-full text-gray font-bold py-2 px-4 rounded inline-flex items-center shadow-lg"
     data-te-ripple-init data-te-ripple-color="light">
+    <ng-container *ngIf="!loading; else loading">
 
-    <img class="fill-current w-8 h-8 mr-2 {{ collected ? 'grayscale' : '' }}"
-        src="https://github.com/PokeAPI/sprites/blob/master/sprites/items/dream-world/poke-ball.png?raw=true">
+        
+        <ng-container *ngIf="collected; else notCollected">
+            <img class="fill-current w-8 h-8 mr-2" src="../../../assets/verified.png" alt="Verified">
+            Caught
+        </ng-container>
 
-    <ng-container *ngIf="collected; else notCollected">
-        Already caught
+        <ng-template #notCollected>
+            <img class="fill-current w-8 h-8 mr-2 {{ collected ? 'grayscale' : '' }}"
+                src="https://github.com/PokeAPI/sprites/blob/master/sprites/items/dream-world/poke-ball.png?raw=true"
+                alt="Poke Ball">
+            Catch
+        </ng-template>
+
+
+        
     </ng-container>
-    <ng-template #notCollected>
-        Catch
+    <ng-template #loading>
+        Catching...
     </ng-template>
 </button>
