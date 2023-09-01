@@ -1,3 +1,5 @@
+//This is the root component of the PokemonTrainer application.
+// It serves as the entry point for the application and provides the overall structure.
 import { Component } from '@angular/core';
 
 @Component({
