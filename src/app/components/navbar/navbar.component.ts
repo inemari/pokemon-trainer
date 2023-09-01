@@ -13,7 +13,7 @@ export class NavbarComponent {
   constructor(
     private readonly userService: UserService,
     private readonly router: Router
-  ) {}
+  ) { }
 
   public get user(): User | undefined {
     return this.userService.user;
@@ -26,5 +26,13 @@ export class NavbarComponent {
       this.userService.user = undefined;
       this.router.navigateByUrl('/login');
     }
+  }
+
+  catalogClick(): void {
+    this.router.navigateByUrl('/catalog');
+
+  }
+  trainerClick(): void {
+    this.router.navigateByUrl('/trainer');
   }
 }

@@ -14,10 +14,11 @@ import { CollectButtonComponent } from './components/collect-button/collect-butt
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TrainerPage } from './pages/trainer/trainer.page';
 import { RemoveButtonComponent } from './components/remove-button/remove-button.component';
+import { HeaderComponent } from './components/header/header.component';
 
 
 @NgModule({
-  declarations: [AppComponent, LoginPage, LoginFormComponent, CatalogPage, PokemonListComponent, PokemonListItemComponent, NavbarComponent, CollectButtonComponent, TrainerPage, RemoveButtonComponent],
+  declarations: [AppComponent, LoginPage, LoginFormComponent, CatalogPage, PokemonListComponent, PokemonListItemComponent, NavbarComponent, CollectButtonComponent, TrainerPage, RemoveButtonComponent, HeaderComponent],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],

@@ -17,18 +17,17 @@ module.exports = {
         xl: "1440px",
       },
       colors: {
-        yellow: "#FFCC00",
+        yellow: "#ffd600",
         orange: "#EE9F2F",
         blue: "#0075BE",
-        "light-grey": "#E1E5E1",
+        "light-grey": "#F6F7F6",
         "dark-brown": "#36321B",
         white: "#FFFFFF",
       },
       fontFamily: {
-        sans: ["Graphik", "sans-serif"],
-        serif: ["Merriweather", "serif"],
+        'poppins': ['poppins', 'sans-serif'],
       },
-    },
+    }
   },
   plugins: [],
 };
