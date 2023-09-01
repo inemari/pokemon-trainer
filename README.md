@@ -7,14 +7,7 @@ An application that lets the user create a Trainer account, catch Pokémon and v
 ```
 git clone https://github.com/TobiasVetrhus/PokemonTrainer.git
 cd PokemonTrainer
-npm install -g @angular/cli
 npm install
-```
-
-For TailwindCSS:
-```
- npm install -D tailwindcss postcss autoprefixer
- npx tailwindcss init
 ```
 
 ## Usage
