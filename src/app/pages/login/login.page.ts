@@ -5,7 +5,6 @@ import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
-  styleUrls: ['./login.page.css'],
 })
 export class LoginPage implements OnInit {
   constructor(
