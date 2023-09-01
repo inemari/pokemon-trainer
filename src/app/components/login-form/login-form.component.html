@@ -15,7 +15,20 @@
     </div>
 
     <button type="submit"
-      class="w-full bg-blue hover:bg-opacity-75 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Log
-      in</button>
+      class="flex flex-row w-full bg-blue hover:bg-opacity-75  font-bold  rounded focus:outline-none focus:shadow-outline justify-center p-3 text-white"
+      [disabled]="loading">
+      <ng-container *ngIf="!loading; else loadingSpinner">
+        Log in
+      </ng-container>
+      <ng-template #loadingSpinner>
+        Loggin in
+        <div
+          class="justify-center inline-block h-8 w-8 animate-spin rounded-full ml-3 border-4 border-solid border-current border-r-transparent  motion-reduce:animate-[spin_1.5s_linear_infinite]"
+          role="status">
+          <span
+            class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)] ml-3">Loading...</span>
+        </div>
+      </ng-template>
+    </button>
   </form>
 </div>
