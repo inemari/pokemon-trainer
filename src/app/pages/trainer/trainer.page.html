@@ -1,9 +1,12 @@
-<header class="container mx-auto p-4">
-  <h1>Welcome {{ user?.username }}</h1>
-</header>
-<main class="bg-light-grey bg-opacity-30">
+<app-header>
+  <img class="h-28 bg-transparent mr-4"
+    src="https://raw.githubusercontent.com/PokeAPI/sprites/6b6d9a9f269d2e5a2859e65f162aafff1087d8e6/sprites/pokemon/other/dream-world/7.svg"
+    alt="Squirtle" />
+  <h1 class="tracking-tight text-3xl text-white font-extrabold">Your pokemon collection!</h1>
+
+</app-header>
+<main class="bg-light-grey text-center h-full">
   <div *ngIf="user">
-    <h4 class="text-xl">These are Your Collected Pokémon!</h4>
 
     <app-pokemon-list [pokemons]="collected"></app-pokemon-list>
 
