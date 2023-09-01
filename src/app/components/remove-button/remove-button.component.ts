@@ -23,7 +23,6 @@ export class RemoveButtonComponent implements OnInit {
 
   ngOnInit() {
     this.collected = this.userService.isCollected(this.pokemonName);
-    //console.log(this.collected)
   }
 
   onDeleteClick(): void {
