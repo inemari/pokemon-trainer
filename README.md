@@ -1,36 +1,53 @@
 # PokemonTrainer
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+An application that lets the user create a Trainer account, catch Pokémon and view them on their trainer page. 
 
-## Development server
+## Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
-
-#########################################
+```
+git clone https://github.com/TobiasVetrhus/PokemonTrainer.git
+cd PokemonTrainer
+npm install -g @angular/cli
 npm install
+```
 
 For TailwindCSS:
+```
  npm install -D tailwindcss postcss autoprefixer
  npx tailwindcss init
+```
+
+## Usage
+
+To start the application, run the following command:
+
+`ng serve`
+
+This command will open a new page in your browser at `localhost:4200` and direct you to the landing page.
+
+## Set-up
+
+For the application to work, you need and api key and an api url. You also need a url to connect 
+to the pokeAPI. 
+
+Generate an environments folder:
+
+`ng generate environments`
+
+In the environment.ts files fill in these values:
+
+```
+production: true/false,
+apiUsers: 'API URL',
+apiKey: 'API key',
+apiPokemons: 'https://pokeapi.co/api/v2/pokemon?limit=1010&offset=0',
+```
+
+Please note that we don't share sensitive items in the README file. If you need them, feel free to contact the contributors of the project. 
+
+## Contributors
+
+[Tobias Vetrhus](https://github.com/TobiasVetrhus)
+[Tommy Jåvold](https://github.com/t-lined)
+[Ine Bredesen](https://github.com/inemari)
 
