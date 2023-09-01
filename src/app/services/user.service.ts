@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
 import { StorageUtil } from '../utils/storage.util';
 import { StorageKeys } from '../consts/storage-keys.enum';
-import { Pokemon } from '../models/pokemon.model';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLinkActive } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +11,7 @@ export class UserService {
   private _user?: User;
   public _page?: string = RouterLinkActive.toString(); //Page information to determine the active page.
 
-  public get page(){
+  public get page() {
     return this._page;
   }
 
@@ -33,7 +32,7 @@ export class UserService {
   //Check if a Pokémon is collected by the user.
   public isCollected(pokemon: string): boolean {
     if (this._user) {
-      return Boolean(this._user?.pokemon.find(p => p === pokemon));
+      return Boolean(this._user?.pokemon.find((p) => p === pokemon));
     }
     return false;
   }
@@ -41,7 +40,7 @@ export class UserService {
   //Release a Pokémon collected by the user.
   public releasePokemon(pokemon: string): void {
     if (this._user) {
-      this._user.pokemon = this._user.pokemon.filter(p => p !== pokemon);
+      this._user.pokemon = this._user.pokemon.filter((p) => p !== pokemon);
     }
   }
 
@@ -51,8 +50,4 @@ export class UserService {
       this._user.pokemon.push(pokemon);
     }
   }
-
-
-
 }
-
