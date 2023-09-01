@@ -3,14 +3,21 @@ import { User } from '../models/user.model';
 import { StorageUtil } from '../utils/storage.util';
 import { StorageKeys } from '../consts/storage-keys.enum';
 import { Pokemon } from '../models/pokemon.model';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   private _user?: User;
+  public _page?: string = RouterLinkActive.toString();
 
-  public get user(): User | undefined {
+public get page(){
+  return this._page;
+}
+
+
+  public get user() {
     return this._user;
   }
 

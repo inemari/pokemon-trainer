@@ -9,11 +9,18 @@ import { StorageUtil } from 'src/app/utils/storage.util';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
+
+  public currentPage: string = ""; // Store the current route here
+
   constructor(
     private readonly userService: UserService,
     private readonly router: Router
   ) { }
+
+  ngOnInit(): void {
+    this.currentPage = this.router.url;
+  }
 
   public get user(): User | undefined {
     return this.userService.user;
@@ -30,8 +37,8 @@ export class NavbarComponent {
 
   catalogClick(): void {
     this.router.navigateByUrl('/catalog');
-
   }
+
   trainerClick(): void {
     this.router.navigateByUrl('/trainer');
   }

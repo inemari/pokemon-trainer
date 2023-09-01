@@ -11,15 +11,17 @@ export class LoginPage implements OnInit {
   constructor(
     private readonly router: Router,
     private readonly userService: UserService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     if (this.userService.user) {
       this.router.navigateByUrl('/catalog');
+
     }
   }
 
   handleLogin(): void {
     this.router.navigateByUrl('/catalog');
+
   }
 }
