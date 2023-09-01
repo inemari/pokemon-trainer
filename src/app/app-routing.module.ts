@@ -1,3 +1,4 @@
+// app-routing.module.ts
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginPage } from './pages/login/login.page';
@@ -16,15 +17,14 @@ const routes: Routes = [
     component: LoginPage,
   },
   {
-    path:'trainer',
+    path: 'trainer',  // Make sure this matches the route used in trainerClick()
     component: TrainerPage,
-    canActivate: [ AuthGuard ]
+    canActivate: [AuthGuard],
   },
   {
-    path: 'catalog',
+    path: 'catalog',  // Make sure this matches the route used in catalogClick()
     component: CatalogPage,
-    canActivate: [ AuthGuard ]
-
+    canActivate: [AuthGuard],
   },
 ];
 
@@ -32,4 +32,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
