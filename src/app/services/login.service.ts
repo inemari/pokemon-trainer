@@ -4,13 +4,14 @@ import { Observable, map, switchMap, of } from 'rxjs';
 import { User } from '../models/user.model';
 import { environment } from 'src/environments/environment';
 
+
 const { apiUsers, apiKey } = environment;
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
-  constructor(private readonly http: HttpClient) {}
+  constructor(private readonly http: HttpClient) { }
 
   //Handles the login process.
   public login(username: string): Observable<User> {
@@ -28,7 +29,7 @@ export class LoginService {
   private checkUsername(username: string): Observable<User | undefined> {
     //Makes an HTTP GET request to fetch users with the provided username.
     return this.http
-      .get<User[]>(`${apiUsers}?username=${username}`)  
+      .get<User[]>(`${apiUsers}?username=${username}`)
       .pipe(map((response: User[]) => response.pop())); //Map the response to the last user found (if any) with the matching username.
   }
 
